@@ -22,7 +22,6 @@ console.log(isUpgrade ? `Upgrading ${PLUGIN_NAME}...` : `Installing ${PLUGIN_NAM
 try {
   // Ensure directories exist
   fs.mkdirSync(path.join(ocConfigDir, 'plugins'), { recursive: true });
-  fs.mkdirSync(path.join(ocConfigDir, 'prompts'), { recursive: true });
   fs.mkdirSync(path.join(ocConfigDir, 'instructions'), { recursive: true });
 
   // Recursive copy function
@@ -51,11 +50,6 @@ export default plugin;
   // For now, copy the dist folder
   if (fs.existsSync(path.join(srcDir, 'dist'))) {
     copyRecursive(path.join(srcDir, 'dist'), path.join(ocConfigDir, 'plugins', 'eoc-opencode-dist'));
-  }
-
-  // Copy prompts
-  if (fs.existsSync(path.join(srcDir, 'prompts'))) {
-    copyRecursive(path.join(srcDir, 'prompts'), path.join(ocConfigDir, 'prompts'));
   }
 
   // Copy instructions
@@ -93,12 +87,12 @@ export default plugin;
     ocConfig.instructions.push(instructionsPath);
   }
 
-  // Ensure skills path
+  // Ensure skills path - use agents folder for skills
   if (!ocConfig.skills) ocConfig.skills = {};
   if (!ocConfig.skills.paths) ocConfig.skills.paths = [];
-  const skillsPath = path.join(ocConfigDir, 'prompts');
-  if (!ocConfig.skills.paths.includes(skillsPath)) {
-    ocConfig.skills.paths.push(skillsPath);
+  const agentsPath = path.join(ocConfigDir, 'agents');
+  if (!ocConfig.skills.paths.includes(agentsPath)) {
+    ocConfig.skills.paths.push(agentsPath);
   }
 
   // Write updated config

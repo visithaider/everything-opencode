@@ -18,11 +18,9 @@ Everything OpenCode (EOC) provides a comprehensive plugin for OpenCode with agen
 | **Custom Tools** | 3 | Native tools for testing and security |
 | **Instructions** | 1 | Consolidated rules and guidelines |
 
-## Quick Start
+## Installation
 
-### Installation
-
-#### Option 1: One-liner (recommended)
+### Quick Install
 ```bash
 # Global install (to ~/.config/opencode/)
 bun x eoc-opencode@latest
@@ -30,89 +28,231 @@ bun x eoc-opencode@latest
 # Local install (to project .opencode/ directory)
 bun x eoc-opencode@latest --local
 
-# npm/npx equivalent
-npx eoc-opencode@latest
-npx eoc-opencode@latest --local
+# Upgrade existing
+bun x eoc-opencode@latest --upgrade
+
+# Uninstall
+bun x eoc-opencode@latest --uninstall
 ```
 
-This automatically installs to the correct location and activates.
+---
 
-### CLI Options
+## How to Use
+
+### Using Commands
+
+Commands are invoked with `/` prefix. They delegate to specialized agents.
+
 ```bash
-bun x eoc-opencode@latest           # Global install
-bun x eoc-opencode@latest --local   # Project-level install
-bun x eoc-opencode@latest --upgrade # Upgrade existing
-bun x eoc-opencode@latest --uninstall    # Uninstall global
-bun x eoc-opencode@latest --uninstall --local # Uninstall project
+# Plan a feature
+/plan
+
+# Run TDD workflow
+/tdd
+
+# Review code
+/code-review
 ```
 
-#### Option 2: Run directly in this repository
+### Using Agents Directly
+
+You can invoke agents directly via the `/ask` command or by mentioning them:
+
 ```bash
-cd everything-opencode
-opencode
+# Use planner agent directly
+@planner Design a user authentication system
+
+# Use security reviewer
+@security-reviewer Audit the auth module
 ```
 
-#### Option 3: Local plugin
-Copy `.opencode/` directory to your project:
+### Using Skills
+
+Skills provide domain-specific knowledge. Load them when needed:
+
 ```bash
-cp -r .opencode/ /path/to/your/project/.opencode/
+# Load backend patterns skill
+@skill backend-patterns
+
+# Load security review skill  
+@skill security-review
 ```
+
+---
 
 ## Available Commands
 
-| Command | Description | Agent |
-|---------|-------------|-------|
-| `/plan` | Create implementation plan | planner |
-| `/tdd` | Test-driven development workflow | tdd-guide |
-| `/code-review` | Review code changes | code-reviewer |
-| `/build-fix` | Fix build errors | build-error-resolver |
-| `/e2e` | Generate E2E tests | e2e-runner |
-| `/refactor-clean` | Remove dead code | refactor-cleaner |
-| `/security-scan` | Security audit | security-reviewer |
-| `/verify` | Run verification loop | build |
-| `/test-coverage` | Analyze coverage | tdd-guide |
-| `/go-review` | Go code review | go-reviewer |
-| `/python-review` | Python code review | python-reviewer |
-| `/multi-plan` | Multi-model planning | planner |
-| `/multi-execute` | Multi-model execution | architect |
-| `/pm2` | PM2 service management | build |
-| `/sessions` | Session history | general |
-| `/skill-create` | Generate skills from git | doc-updater |
-| `/harness-audit` | Audit harness reliability | harness-optimizer |
-| `/loop-start` | Start agentic loop | loop-operator |
+### Planning & Development
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/plan` | Create implementation plan | `/plan Build a user authentication system` |
+| `/tdd` | Test-driven development | `/tdd Add login validation` |
+| `/code-review` | Code quality review | `/code-review` or `/code-review --security` |
+| `/build-fix` | Fix build errors | `/build-fix` |
+| `/refactor-clean` | Remove dead code | `/refactor-clean` |
+
+### Testing & Quality
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/e2e` | Generate E2E tests | `/e2e User login flow` |
+| `/test-coverage` | Analyze coverage | `/test-coverage` |
+| `/verify` | Verification loop | `/verify` |
+
+### Security
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/security-scan` | Security audit | `/security-scan` |
+
+### Language-Specific
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/go-review` | Go code review | `/go-review` |
+| `/go-build` | Fix Go build errors | `/go-build` |
+| `/go-test` | Run Go tests | `/go-test` |
+| `/python-review` | Python code review | `/python-review` |
+
+### Multi-Model Operations
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/multi-plan` | Multi-model planning | `/multi-plan Feature request` |
+| `/multi-execute` | Multi-model execution | `/multi-execute Implement auth` |
+| `/multi-frontend` | Frontend multi-model | `/multi-frontend React component` |
+| `/multi-backend` | Backend multi-model | `/multi-backend API endpoint` |
+| `/multi-workflow` | Workflow multi-model | `/multi-workflow Full feature` |
+
+### Documentation & Refactoring
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/update-docs` | Update documentation | `/update-docs` |
+| `/refactor-clean` | Clean dead code | `/refactor-clean` |
+
+### Operations & DevOps
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/pm2` | PM2 service management | `/pm2 status` |
+| `/setup-pm` | Setup PM2 | `/setup-pm` |
+| `/sessions` | Session history | `/sessions` |
+| `/harness-audit` | Audit harness | `/harness-audit` |
+| `/quality-gate` | Quality checks | `/quality-gate` |
+
+### Loops & Automation
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/loop-start` | Start agentic loop | `/loop-start Build feature` |
+| `/loop-status` | Check loop status | `/loop-status` |
+| `/evolve` | Auto-evolve code | `/evolve` |
+
+### Learning & Evaluation
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/learn` | Learn from session | `/learn` |
+| `/learn-eval` | Evaluate learning | `/learn-eval` |
+| `/eval` | Evaluate performance | `/eval` |
+| `/checkpoint` | Save checkpoint | `/checkpoint` |
+
+### Model Management
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/model-route` | Route to models | `/model-route` |
+
+### Project Management
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/projects` | List projects | `/projects` |
+| `/promote` | Promote changes | `/promote` |
+
+### Instincts
+
+| Command | Description | Usage Example |
+|---------|-------------|---------------|
+| `/instinct-status` | Check instincts | `/instinct-status` |
+| `/instinct-export` | Export instincts | `/instinct-export` |
+| `/instinct-import` | Import instincts | `/instinct-import` |
+
+---
 
 ## Available Agents
 
 ### Planning & Architecture
-- **planner** - Implementation planning
-- **architect** - System design
+| Agent | Description | How to Use |
+|-------|-------------|------------|
+| `planner` | Creates detailed implementation plans | `@planner Design a REST API` |
+| `architect` | System design and architecture | `@architect Scalable microservices` |
 
 ### Development
-- **tdd-guide** - Test-driven development
-- **build-error-resolver** - Build error fixes
+| Agent | Description | How to Use |
+|-------|-------------|------------|
+| `tdd-guide` | Enforces test-first development | `@tdd-guide Implement user auth` |
+| `build-error-resolver` | Fixes build/compilation errors | `@build-error-resolver` |
 
 ### Review & Quality
-- **code-reviewer** - Code quality review
-- **security-reviewer** - Security analysis
-- **e2e-runner** - E2E testing
-- **refactor-cleaner** - Dead code removal
-- **doc-updater** - Documentation updates
+| Agent | Description | How to Use |
+|-------|-------------|------------|
+| `code-reviewer` | Code quality and security review | `@code-reviewer` |
+| `security-reviewer` | Vulnerability analysis | `@security-reviewer` |
+| `e2e-runner` | Playwright E2E tests | `@e2e-runner Login flow` |
+| `refactor-cleaner` | Dead code removal | `@refactor-cleaner` |
+| `doc-updater` | Documentation sync | `@doc-updater` |
 
 ### Language-Specific
-- **go-reviewer** - Go code review
-- **go-build-resolver** - Go build errors
-- **python-reviewer** - Python code review
-- **database-reviewer** - Database/Supabase review
+| Agent | Description | How to Use |
+|-------|-------------|------------|
+| `go-reviewer` | Go code review | `@go-reviewer` |
+| `go-build-resolver` | Go build errors | `@go-build-resolver` |
+| `python-reviewer` | Python code review | `@python-reviewer` |
+| `database-reviewer` | Supabase/PostgreSQL | `@database-reviewer` |
 
 ### Operations
-- **chief-of-staff** - Communication triage
-- **loop-operator** - Autonomous loops
-- **harness-optimizer** - Config optimization
+| Agent | Description | How to Use |
+|-------|-------------|------------|
+| `chief-of-staff` | Communication triage | `@chief-of-staff` |
+| `loop-operator` | Autonomous loops | `@loop-operator` |
+| `harness-optimizer` | Config optimization | `@harness-optimizer` |
+
+---
+
+## Available Skills
+
+Skills are loaded on-demand for domain-specific guidance.
+
+### core Skills
+
+| Skill | Description | When to Use |
+|-------|-------------|-------------|
+| `coding-standards` | TS/JS/React best practices | General development |
+| `backend-patterns` | Node.js/Express/Next.js APIs | Backend development |
+| `frontend-patterns` | React/Next.js patterns | Frontend development |
+| `security-review` | Security checklists | Auth, payments, APIs |
+| `tdd-workflow` | TDD methodology | Test-driven development |
+| `continuous-learning` | Pattern extraction | Learning from sessions |
+
+### Loading a Skill
+
+```bash
+# The skill tool loads automatically when you mention the skill
+# e.g., "Use the security-review skill" loads it automatically
+
+# Or explicitly:
+@skill security-review
+```
+
+---
 
 ## Custom Tools
 
 ### run-tests
-Run the test suite with optional coverage:
+Run test suite with optional coverage:
 ```typescript
 await runTests({ coverage: true, file: "src/auth.test.ts" })
 ```
@@ -124,108 +264,50 @@ await checkCoverage({ threshold: 80, reporter: "text" })
 ```
 
 ### security-audit
-Run security audit scan:
+Run security scan:
 ```typescript
 await securityAudit({ fix: true, deep: false })
 ```
 
+---
+
 ## Hook Events
 
-The plugin supports the following OpenCode events:
+The plugin supports OpenCode events:
 
 | Event | Description |
 |-------|-------------|
 | `session.created` | Session initialization |
-| `session.idle` | Session idle detection |
-| `session.deleted` | Session cleanup |
+| `session.idle` | Idle detection |
+| `session.deleted` | Cleanup |
 | `tool.execute.before` | Pre-tool execution |
 | `tool.execute.after` | Post-tool execution |
 | `file.edited` | File modification |
-| `message.updated` | Message updates |
 
-## Configuration
-
-### Basic Configuration
-```json
-{
-  "plugins": ["eoc-opencode"],
-  "instructions": [".opencode/instructions/INSTRUCTIONS.md"]
-}
-```
-
-### Full Configuration
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "instructions": [".opencode/instructions/INSTRUCTIONS.md"],
-  "command": {
-    "plan": {
-      "template": "Restate requirements...",
-      "description": "Create implementation plan",
-      "agent": "planner"
-    }
-  },
-  "agent": {
-    "planner": {
-      "description": "Expert planning specialist",
-      "mode": "subagent",
-      "prompt": "{file:./prompts/planner.txt}"
-    }
-  }
-}
-```
+---
 
 ## File Structure
 
 ```
 .opencode/
-|-- index.ts              # Main plugin entry point
-|-- opencode.json         # Configuration
-|-- package.json          # Dependencies
-|-- tsconfig.json         # TypeScript config
-|-- plugins/              # Plugin hooks
-|-- prompts/              # Agent prompts
-|-- agents/               # Agent definitions
-|-- commands/             # Command files
-|-- instructions/         # Rules and guidelines
+|-- index.ts              # Plugin entry
+|-- opencode.json         # Config
+|-- agents/               # Agent definitions (with embedded prompts)
+|-- commands/            # Command files
+|-- instructions/        # Rules
+|-- skills/              # Domain skills
 |-- tools/               # Custom tools
 ```
 
-## Development
-
-### Building the Plugin
-```bash
-# Install dependencies
-cd .opencode
-npm install
-
-# Build (if needed)
-npx tsc
-```
-
-### Testing
-```bash
-# Run tests
-npm testc
-
-# Run coverage
-npm run coverage
-```
-
-## Documentation
-
-- [MIGRATION.md](MIGRATION.md) - Guide for migrating from Claude Code
-- [Full Documentation](../README.md) - Complete ECC documentation
+---
 
 ## Requirements
 
-- OpenCode 1.8.0 or later
+- OpenCode 1.8.0+
 - Node.js 18+
+
+---
 
 ## License
 
-MIT License - see [../LICENSE](../LICENSE)
-
-## Credits
-
-Created by [Affaan Mustafa](https://x.com/affaanmustafa)
+MIT License

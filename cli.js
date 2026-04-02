@@ -47,7 +47,6 @@ function install() {
     fs.mkdirSync(path.join(ocConfigDir, 'plugins'), { recursive: true });
     fs.mkdirSync(path.join(ocConfigDir, 'agents'), { recursive: true });
     fs.mkdirSync(path.join(ocConfigDir, 'commands'), { recursive: true });
-    fs.mkdirSync(path.join(ocConfigDir, 'prompts'), { recursive: true });
     fs.mkdirSync(path.join(ocConfigDir, 'instructions'), { recursive: true });
 
     // Recursive copy function
@@ -80,11 +79,6 @@ function install() {
     // Copy commands folder
     if (fs.existsSync(path.join(srcDir, 'commands'))) {
       copyRecursive(path.join(srcDir, 'commands'), path.join(ocConfigDir, 'commands'));
-    }
-
-    // Copy prompts (skills)
-    if (fs.existsSync(path.join(srcDir, 'prompts'))) {
-      copyRecursive(path.join(srcDir, 'prompts'), path.join(ocConfigDir, 'prompts'));
     }
 
     // Copy instructions
@@ -175,7 +169,7 @@ function uninstall() {
       // Remove eoc skills paths
       if (ocConfig.skills && ocConfig.skills.paths) {
         ocConfig.skills.paths = ocConfig.skills.paths.filter(p => 
-          !p.includes('eoc-opencode') && !p.includes('prompts')
+          !p.includes('eoc-opencode')
         );
       }
       
@@ -193,12 +187,6 @@ function uninstall() {
     const pluginDir = path.join(ocConfigDir, 'plugins', `${PLUGIN_NAME}-dist`);
     if (fs.existsSync(pluginDir)) {
       fs.rmSync(pluginDir, { recursive: true, force: true });
-    }
-
-    // Remove prompts/skills folder
-    const promptsDir = path.join(ocConfigDir, 'prompts');
-    if (fs.existsSync(promptsDir)) {
-      fs.rmSync(promptsDir, { recursive: true, force: true });
     }
 
     // Remove agents folder
