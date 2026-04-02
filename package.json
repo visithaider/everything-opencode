@@ -1,6 +1,6 @@
 {
   "name": "eoc-opencode",
-  "version": "1.0.3",
+  "version": "1.8.0",
   "description": "Everything OpenCode - OpenCode Plugin with agents, commands, skills, hooks, and rules",
   "type": "module",
   "main": "./dist/index.js",
